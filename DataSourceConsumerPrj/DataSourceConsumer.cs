@@ -1,18 +1,18 @@
 ﻿using Core.Interfaces;
 using GalaSoft.MvvmLight.Ioc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace DataSourceConsumerPrj
 {
     public class DataSourceConsumer
     {
+        private IDataSource _iDS;
+        public DataSourceConsumer()
+        {
+            _iDS = SimpleIoc.Default.GetInstance<IDataSource>();
+        }
         public string GetLetters(int number)
         {
-            IDataSource iDS= SimpleIoc.Default.GetInstance<IDataSource>();
-            return iDS.GetString(number);
+            return _iDS.GetString(number);
         }
     }
 }
